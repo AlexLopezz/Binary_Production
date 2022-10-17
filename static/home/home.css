@@ -1,0 +1,77 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Open Sans';
+}
+body{
+	
+	background-size: cover;
+}
+nav{
+	max-width: 900px;
+	margin: auto;
+	background-color: #333;
+	font-size: 20px;
+	margin-top: 50px;
+}
+.menu-horizontal{
+	list-style: none;
+	display: flex;
+	justify-content: space-around;
+}
+.menu-horizontal > li > a{
+	display: block;
+	padding: 15px 20px;
+	color: white;
+	text-decoration: none;
+}
+.menu-horizontal > li a:hover{
+	color: darkgreen;
+	transition: all .3s;
+}
+.menu-vertical{
+	position: absolute;
+	display: none;
+	list-style: none;
+	width: 200px;
+	background-color: rgba(0, 0, 0, .5);
+}
+.menu-horizontal li:hover .menu-vertical{
+	display: block;
+}
+.menu-vertical li a:hover{
+	color: darkgreen;
+	transition: all .3s;
+}
+
+.menu-vertical li a{
+	display: block;
+	color: white;
+	text-decoration: none;
+	padding: 15px 15px 15px 20px;
+}
+
+.parent{
+	padding: 20px 0 0 0;
+	text-align : center;
+}
+
+footer{
+	background-color: #333;
+	color:aliceblue;
+	padding: 10px;
+	text-align: center;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+}
+footer p{
+	bottom: 0;
+}
+.django-logo{
+		width: 90px;
+		height: 50px;
+		bottom: 10px;
+		text-align: center;
+}

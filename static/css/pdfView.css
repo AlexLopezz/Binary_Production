@@ -1,0 +1,46 @@
+body{
+    margin:0;
+    padding: 0;
+    background-color: gray;
+}
+header{
+    display: flex;
+}
+header h1{
+    margin-right: 20px;
+    font-family: verdana;
+    font-size:20px;
+}
+header img{
+    width: 120px;
+    height: 120px;
+    
+}
+.img{
+    width: 280px;
+    height: 240px;
+    box-shadow: 2px 2px;
+    border: 30px;
+    border-color: black;
+    border-radius: 15px;
+}
+.price{
+    font-size: 24px;
+}
+.container{
+    border-radius: 1rem;
+    box-shadow: 1rem;
+}
+.left{
+    margin: 2px;
+    padding-left: 10px;
+}
+.menu{
+    text-align: center;
+    border: 3px solid black;
+    border-radius: 15px;
+    max-width: 650px;
+}
+.menu h1{
+    font-size: 24px;
+}

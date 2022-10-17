@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<title>BinarySystem - APIs</title>
+		<!-- CSS only -->
+		<link rel="icon" href="{% static 'home/BinarySystem.ico' %}">
+		<link type="text/css" href="{% static 'home/home.css' %}" rel="stylesheet">
+	</head>
+<body style="background-image: url('{% static "home/Caracteristicas-del-Software...jpg" %}');">
+		<nav>
+			<ul class="menu-horizontal">
+				<li><a href="https://github.com/AlexLopezz/BinarySystem-API">Git-Hub</a></li>
+				<li>
+					<a href="#">Sobre mi</a>
+				</li>
+				<li>
+					<a href="#">Servicios REST</a>
+					<ul class="menu-vertical">
+						<li><a href="https://binarysystem.pythonanywhere.com/admin/">ADMIN-DJANGO</a></li>
+						<li><a href="https://binarysystem.pythonanywhere.com/api/login/">API-LOGIN</a></li>
+						<li><a href="https://binarysystem.pythonanywhere.com/api/register/">API-REGISTER</a></li>
+						<li><a href="https://binarysystem.pythonanywhere.com/food/">API-LISTA DE COMIDAS</a></li>
+					</ul>
+				</li>
+				<li><a href="#">Contacto</a></li>
+			</ul>
+		</nav>
+		
+		<div class="parent">
+			<img class="img-BinarySystem" src="{% static 'home/Animation_LOGO_BINARYSYSTEM.gif' %}">
+		</div>
+		<footer>
+			<p>© Alexdev</p>
+			<img class="django-logo" src="{% static 'home/Django-Logo.png'%}">
+		</footer>
+	</body>
+</html>
