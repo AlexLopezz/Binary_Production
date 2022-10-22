@@ -8,7 +8,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),
     path('', HomeRest.as_view(), name="homeRest"),
-    path('', include('applications.food.urls')),
+    path('', include('applications.product.urls')),
     path('', include('applications.user.urls')),
     path('', include('applications.pdftoHtml.urls')),
     path('', include('applications.opinions.urls')),

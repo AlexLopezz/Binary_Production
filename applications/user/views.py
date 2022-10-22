@@ -1,20 +1,25 @@
 from rest_framework import generics, permissions, status
 from rest_framework.response import Response
 from .serializers import ( UserSerializer, RegisterSerializer,
-                          CustomSerializer, RoleSerializer,ModifySerializer)
+                          CustomSerializer, RegisterAdminSerializer,ModifySerializer, ReservaUserSerializer)
 from rest_framework.authtoken.serializers import AuthTokenSerializer
 from django.contrib.auth import login
 from rest_framework.decorators import api_view
 from knox.views import LoginView as KnoxLoginView
 from rest_framework import status
 from .models import User
+from django.db.models import Q
 
 # Register API
 class RegisterAPI(generics.GenericAPIView):
-    serializer_class = RegisterSerializer
-
+    
     def post(self, request, *args, **kwargs):
-        serializer = self.get_serializer(data=request.data)
+        if self.request.data['role'] == 1:
+            serializer_class = RegisterAdminSerializer
+        else:
+            serializer_class = RegisterSerializer
+        
+        serializer = serializer_class(data=request.data)
         serializer.is_valid(raise_exception=True)
         user = serializer.save()
         return Response(UserSerializer(user, context=self.get_serializer_context()).data, status= status.HTTP_200_OK)
@@ -82,14 +87,13 @@ def filterCaja(request):
 @api_view(['DELETE'])
 def deleteUser(request):
     if request.method == 'DELETE':
-        try:
-            user_id = request.query_params.get('id')
-            user= User.objects.get(pk = user_id)
-            if user:
-                user.delete()
-                return Response("Se elimino correctamente el usuario",status=status.HTTP_200_OK)
-        except:
-            return Response("No se encontro usuario con ese ID.",status = status.HTTP_400_BAD_REQUEST)
+        user_id = request.query_params.get('id')
+        user= User.objects.get(pk = user_id)
+        if user:
+            user.delete()
+            return Response("Se elimino correctamente el usuario",status=status.HTTP_200_OK)
+        else:
+            return Response("Usuario con ese ID, no encontrado.", status=status.HTTP_400_BAD_REQUEST)
 
 #METODO PUT:
 @api_view(['PUT'])
@@ -99,6 +103,30 @@ def modifyUser(request):
         serializer =  ModifySerializer(user_to_modify, data = request.data)
         if serializer.is_valid():
             serializer.save()
-            return Response("Se modifico usuario, correctamente.", status= status.HTTP_200_OK)
+            return Response(serializer.data, status= status.HTTP_200_OK)
         else:
             return Response(f"Hubo un problema: {serializer.erros}", status=status.HTPP_400_BAD_REQUEST)
+
+@api_view(['GET'])
+def filterForUser(request):
+    if request.method == 'GET':
+        user = User.objects.filter(
+            Q(username__icontains = request.query_params.get('username')) |
+            Q(fullname__icontains = request.query_params.get('username')) |
+            Q(role__name ="Usuario")).distinct()
+        
+        if user:
+            serializer = ReservaUserSerializer(user, many=True)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        else:
+            return Response("No se encontro usuario con ese nombre.")
+            
+@api_view(['GET'])
+def myUser(request):
+    if request.method == 'GET':
+        user = User.objects.get(pk=request.query_params['id'])
+        if user:
+            serializer = CustomSerializer(user)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

@@ -1,12 +1,10 @@
-from requests import request
-from yaml import serialize
 from .models import Reservation
 from rest_framework.views import APIView
 from rest_framework import status
 from rest_framework.generics import ListAPIView
 from applications.user.models import User
 from rest_framework.decorators import api_view
-from applications.reservation.serializers import ReservationSerializer, MyReservationSerializer, Selected_Table_Serializer, PaidSerializer
+from applications.reservation.serializers import ReservationSerializer, getReservationSerializer, getTableReservationSerializer, PaidSerializer
 from rest_framework.response import Response
 # Create your views here.
 
@@ -29,18 +27,18 @@ def paidReservationAPIView(request):
 
 class ReservationAPIView(APIView): #ACTUALIZADO: Funciona para realizar las reservas.
     def post(self, request, *args, **kwargs):
-        reservation = ReservationSerializer(data= request.data)
-        if reservation.is_valid():
-            reservation.save() #Registra en la DB, la registra y la manda a "data"
+        serializer = ReservationSerializer(data= request.data)
+        if serializer.is_valid():
+            serializer.save() #Registra en la DB, la registra y la manda a "data"
             return Response("Reserva guardada con exito", status = status.HTTP_200_OK)
         else:
-            return Response(reservation.errors,status = status.HTTP_400_BAD_REQUEST)
+            return Response(serializer.errors,status = status.HTTP_400_BAD_REQUEST)
 
 class MyReservationAPIView(APIView): #Serializa solo las reservas de un usuario en particular, pasandole el ID del usuario.
     def get(self, request, *args, **kwargs):
         user_id = request.query_params.get('user_id')
         myReservation = Reservation.objects.filter(user_id = user_id)
-        serializer = MyReservationSerializer(myReservation, many=True)
+        serializer = getReservationSerializer(myReservation, many=True)
         if myReservation:
             return Response(serializer.data)
         else:
@@ -65,34 +63,36 @@ def detailReservationAPIView(request): #Muestra en detalle una reserva, pasando 
     if request.method == 'GET':
         id = request.query_params.get('id')
         reservation = Reservation.objects.get(pk = id)
-        serializer = MyReservationSerializer(reservation)
+        serializer = getReservationSerializer(reservation)
         return Response(serializer.data)
 
 @api_view(['GET'])
 def allReservationAPIView(request): #Muestra todas las reservas disponibles, o que esteen en la base de datos registradas.
     if request.method == 'GET':
         allReservation = Reservation.objects.all()
-        serializer = MyReservationSerializer(allReservation, many=True)
+        serializer = getReservationSerializer(allReservation, many=True)
         if serializer:
             return Response(serializer.data, status=status.HTTP_200_OK)
         else:
             return Response("No hay reservaciones registradas.", status=status.HTTP_404_NOT_FOUND)
 
-class GetTableSelectedAPIView(ListAPIView): #Obtiene las reservas, mediante la fecha y horario que recibimos por GET.
-    serializer_class = Selected_Table_Serializer
-    def get_queryset(self):
-        date = self.request.query_params.get('date')
-        schedule = self.request.query_params.get('schedule')
+@api_view(['GET'])
+def getTableSelectedAPIView(request): #Obtiene las reservas, mediante la fecha y horario que recibimos por GET.
+    
+    if request.method == 'GET':
+        date = request.query_params.get('date')
+        schedule = request.query_params.get('schedule')
         getReservation = Reservation.objects.filter(date=date, schedule=schedule)
-
-        return getReservation
+        if getReservation:
+            serializer =getTableReservationSerializer(getReservation, many=True)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        else:
+            return Response("No se encontraron reservaciones.")
 
 @api_view(['GET'])
 def filterForDateReservation(request): #Obtiene todas las reservas de una determinada fecha, mediante el parametro que recibimos por GET.
     if request.method == 'GET':
         reservationDay = Reservation.objects.filter(date=request.query_params.get('date'))
-        serializer =  MyReservationSerializer(reservationDay, many=True)
+        serializer =  getReservationSerializer(reservationDay, many=True)
         return Response(serializer.data)
-
-
 

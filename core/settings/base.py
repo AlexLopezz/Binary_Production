@@ -21,7 +21,7 @@ INSTALLED_APPS = [
     'knox',
     'corsheaders',
     #MY APPS:
-    'applications.food',
+    'applications.product',
     'applications.user',
     'applications.contact',
     'applications.pdftoHtml',
@@ -34,7 +34,6 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     #Corsheaders
     'corsheaders.middleware.CorsMiddleware',
-
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
