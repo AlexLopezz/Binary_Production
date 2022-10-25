@@ -12,13 +12,13 @@ from django.db.models import Q
 
 # Register API
 class RegisterAPI(generics.GenericAPIView):
-    
+
     def post(self, request, *args, **kwargs):
         if self.request.data['role'] == 1:
             serializer_class = RegisterAdminSerializer
         else:
             serializer_class = RegisterSerializer
-        
+
         serializer = serializer_class(data=request.data)
         serializer.is_valid(raise_exception=True)
         user = serializer.save()
@@ -39,9 +39,9 @@ class LoginAPI(KnoxLoginView):
 #METODOS GET - APLICACION DE USUARIOS
 
 @api_view(['GET'])
-def allUserDB(request):        
+def allUserDB(request):
     if request.method == 'GET':
-        
+
         all_user = User.objects.all() #Obtendre todos los usuarios registrados en la base de datos.
         if all_user:
             serializer = CustomSerializer(all_user, many=True) #Serializo mi lista de objetos(en este caso) a JSON para retornar en el GET.
@@ -54,7 +54,7 @@ def allUserDB(request):
 def filterMitre(request):
     if request.method == 'GET':
         mitre = User.objects.filter(
-            role__name="Mitre")
+            role__name="Maitre")
         if mitre:
             serializer =CustomSerializer(mitre, many=True)
             return Response(serializer.data, status=status.HTTP_200_OK)
@@ -114,13 +114,13 @@ def filterForUser(request):
             Q(username__icontains = request.query_params.get('username')) |
             Q(fullname__icontains = request.query_params.get('username')) |
             Q(role__name ="Usuario")).distinct()
-        
+
         if user:
             serializer = ReservaUserSerializer(user, many=True)
             return Response(serializer.data, status=status.HTTP_200_OK)
         else:
             return Response("No se encontro usuario con ese nombre.")
-            
+
 @api_view(['GET'])
 def myUser(request):
     if request.method == 'GET':
