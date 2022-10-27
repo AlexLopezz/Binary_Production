@@ -23,16 +23,26 @@ class ProductOrder(models.Model):
     
     def __str__(self) -> str:
         return f"Productos elegidos"
-    
+
+class Method_Pay(models.Model):
+    name = models.CharField(verbose_name="Nombre", max_length=50)
+
+    def __str__(self) -> str:
+        return self.name
+
+
 class Invoice(models.Model):
     number_invoice= models.AutoField(primary_key=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)    
     date = models.DateField(auto_now_add=True)
     order = models.OneToOneField(Order, on_delete=models.CASCADE)
+    method_pay = models.ForeignKey(Method_Pay, on_delete = models.CASCADE)
     
     def __str__(self) -> str:
         return f"Factura N°{self.number_invoice}"
     
     class Meta:
         verbose_name="Facturas - Restaurante Sentidos y Casa de Te"
+
+
     
