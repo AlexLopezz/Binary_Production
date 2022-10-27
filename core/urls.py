@@ -14,4 +14,5 @@ urlpatterns = [
     path('', include('applications.opinions.urls')),
     path('', include('applications.reservation.urls')),
     path('', include('applications.contact.urls')),
+    path('', include('applications.checking_in.urls')),
 ] +static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) +static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
