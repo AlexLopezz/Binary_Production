@@ -18,14 +18,14 @@ class ReservaUserSerializer(serializers.ModelSerializer):
             'id',
             'username',
         )
-        
+
 class UserSerializer(serializers.ModelSerializer):
     role = RoleSerializer()
     class Meta:
         model = User
         fields = ('id','username', 'role')
-        
-        
+
+
 
 # Register Serializer
 class RegisterSerializer(serializers.ModelSerializer):
@@ -33,8 +33,8 @@ class RegisterSerializer(serializers.ModelSerializer):
         model = User
         fields = ('id','username', 'email','fullname','dni','password','role')
         extra_kwargs = {'password': {'write_only': True}}
-        
-        
+
+
     def create(self, validated_data):
         user = User.objects.create_user(
             username= validated_data['username'], email = validated_data['email'], fullname= validated_data['fullname'],
@@ -48,11 +48,11 @@ class RegisterAdminSerializer(serializers.ModelSerializer):
         model = User
         fields = ('id','username', 'email','fullname','dni','password','role')
         extra_kwargs = {'password': {'write_only': True}}
-        
+
     def create(self, validated_data):
         user = User.objects.create_superuser(
         username= validated_data['username'], email = validated_data['email'], fullname= validated_data['fullname'],
-        dni= validated_data['dni'], password= validated_data['password'],role= validated_data['role']) 
+        dni= validated_data['dni'], password= validated_data['password'],role= validated_data['role'])
         return user
 class CustomSerializer(serializers.ModelSerializer):
     role = RoleSerializer()
@@ -73,10 +73,20 @@ class ModifySerializer(serializers.ModelSerializer):
         model= User
         fields= ('id','username', 'email','fullname','dni','password','role')
         extra_kwargs = {'password': {'write_only': True}}
-    
+
     def update(self, instance, validated_data):
         user_update= super().update(instance, validated_data)
         user_update.set_password(validated_data['password'])
         user_update.save()
         return user_update
-        
+
+class InvoiceUSerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = (
+            'id',
+            'username',
+            'fullname',
+            'dni',
+            'email',
+        )

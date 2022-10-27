@@ -21,6 +21,7 @@ INSTALLED_APPS = [
     'knox',
     'corsheaders',
     #MY APPS:
+    'applications.checking_in',
     'applications.product',
     'applications.user',
     'applications.contact',
