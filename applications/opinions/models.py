@@ -13,7 +13,6 @@ class OpinionsUser(models.Model):
     place = models.IntegerField("Lugar", validators=[MinValueValidator(1), MaxValueValidator(5)], blank=False)
     food = models.IntegerField("Comida", validators=[MinValueValidator(1), MaxValueValidator(5)], blank=False)
     price = models.IntegerField("Precio", validators=[MinValueValidator(1), MaxValueValidator(5)], blank=False)
-    created = models.BooleanField(default=True)
 
     def __str__(self):
         return self.user.username

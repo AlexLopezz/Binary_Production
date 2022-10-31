@@ -83,6 +83,18 @@ def filterCaja(request):
         else:
             return Response("No existen usuarios en el ROL de CAJA.", status=status.HTTP_404_NOT_FOUND)
 
+@api_view(['GET'])
+def filterClient(request):
+    if request.method == 'GET':
+        userClient = User.objects.filter(
+            role__name="Usuario")
+    if userClient:
+        serializer= CustomSerializer(userClient, many=True)
+        return Response(serializer.data, status= status.HTTP_200_OK)
+    else:
+        return Response("No existen usuarios en el ROL de USUARIO")
+
+
 # METODO DELETE:
 @api_view(['DELETE'])
 def deleteUser(request):
@@ -130,3 +142,15 @@ def myUser(request):
             return Response(serializer.data, status=status.HTTP_200_OK)
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['GET'])
+def filterForUsername(request):
+     if request.method == 'GET':
+        user = User.objects.filter(
+            Q(username__icontains = request.query_params.get('username'))).distinct()
+
+        if user:
+            serializer = CustomSerializer(user, many=True)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        else:
+            return Response("No se encontro usuario con ese nombre.")

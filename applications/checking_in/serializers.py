@@ -7,7 +7,17 @@ class PaySerializer(serializers.ModelSerializer):
         model = Method_Pay
         fields = '__all__'
 
-class ProductOrderSerializer(serializers.ModelSerializer):
+class ProductOrderSerializerPOST(serializers.ModelSerializer):
+    class Meta:
+        model = ProductOrder
+        fields = (
+            'product',
+            'quantity',
+            'price',
+        )
+
+class ProductOrderSerializerGET(serializers.ModelSerializer):
+    product = serializers.StringRelatedField()
     class Meta:
         model = ProductOrder
         fields = (
@@ -18,7 +28,7 @@ class ProductOrderSerializer(serializers.ModelSerializer):
 
 #Serializer para metodo GET. Mostrar todos los pedidos.
 class OrderSerializer(serializers.ModelSerializer):
-    products = ProductOrderSerializer(many=True, source="productorder_set")
+    products = ProductOrderSerializerGET(many=True, source="productorder_set")
 
     class Meta:
         model = Order
@@ -31,7 +41,7 @@ class OrderSerializer(serializers.ModelSerializer):
 
 #Serializer para POST - Realiza un pedido.
 class OrderSerializerPOST(serializers.ModelSerializer):
-    products = ProductOrderSerializer(many=True, source="productorder_set")
+    products = ProductOrderSerializerPOST(many=True, source="productorder_set")
 
     class Meta:
         model = Order
@@ -72,5 +82,6 @@ class InvoiceSerializerPOST(serializers.ModelSerializer):
         fields = (
             'user',
             'order',
+            'method_pay',
         )
 

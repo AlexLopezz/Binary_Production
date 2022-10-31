@@ -1,6 +1,7 @@
 from django.urls import path
 from .views import(RegisterAPI,LoginAPI, allUserDB, deleteUser, filterForUser,
-                   filterMitre, filterCaja, filterMozo, deleteUser, modifyUser, myUser)
+                   filterMitre, filterCaja, filterMozo, deleteUser, modifyUser, myUser,
+                   filterClient, filterForUsername)
 from knox import views as knox_views
 
 urlpatterns = [
@@ -13,10 +14,13 @@ urlpatterns = [
     path('api/allMitre/', filterMitre),
     path('api/allMozo/', filterMozo),
     path('api/allCaja/', filterCaja),
-    #DELETE, AGREGAR, MODIFICAR:
+    path('api/allClient/', filterClient),
+    #DELETE Y ADD USER:
     path('api/deleteUser/', deleteUser),
     path('api/modifyUser/', modifyUser),
+    #FILER FOR USERNAME AND FULLNAME:
     path('api/filterForUser/', filterForUser),
-    path('api/myUser/', myUser)
+    path('api/filterForUsername/', filterForUsername),
+    path('api/myUser/', myUser),
 ]
 
