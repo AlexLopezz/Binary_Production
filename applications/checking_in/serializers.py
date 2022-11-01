@@ -69,7 +69,6 @@ class InvoiceSerializerGET(serializers.ModelSerializer):
         model = Invoice
         fields = (
             'number_invoice',
-            'user',
             'date',
             'order',
             'method_pay',
@@ -80,8 +79,16 @@ class InvoiceSerializerPOST(serializers.ModelSerializer):
     class Meta:
         model = Invoice
         fields = (
-            'user',
             'order',
             'method_pay',
         )
+
+class PaySerializerPUT(serializers.ModelSerializer):
+    class Meta:
+        model = Order
+        fields = (
+            'id',
+            'pay',
+            )
+
 

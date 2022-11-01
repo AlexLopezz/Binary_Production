@@ -9,7 +9,6 @@ class OrderAdmin(admin.ModelAdmin):
     inlines = [ProductOrderInline,]
 
 
-
 admin.site.register(Order, OrderAdmin)
 admin.site.register(Invoice)
 admin.site.register(Method_Pay)

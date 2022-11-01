@@ -1,0 +1,162 @@
+[
+{
+    "model": "reservation.tables",
+    "pk": 1,
+    "fields": {
+        "number_mesa": 1,
+        "is_selected": false
+    }
+},
+{
+    "model": "reservation.tables",
+    "pk": 2,
+    "fields": {
+        "number_mesa": 2,
+        "is_selected": false
+    }
+},
+{
+    "model": "reservation.tables",
+    "pk": 3,
+    "fields": {
+        "number_mesa": 3,
+        "is_selected": false
+    }
+},
+{
+    "model": "reservation.tables",
+    "pk": 4,
+    "fields": {
+        "number_mesa": 4,
+        "is_selected": false
+    }
+},
+{
+    "model": "reservation.tables",
+    "pk": 5,
+    "fields": {
+        "number_mesa": 5,
+        "is_selected": false
+    }
+},
+{
+    "model": "reservation.tables",
+    "pk": 6,
+    "fields": {
+        "number_mesa": 6,
+        "is_selected": false
+    }
+},
+{
+    "model": "reservation.tables",
+    "pk": 7,
+    "fields": {
+        "number_mesa": 7,
+        "is_selected": false
+    }
+},
+{
+    "model": "reservation.tables",
+    "pk": 8,
+    "fields": {
+        "number_mesa": 8,
+        "is_selected": false
+    }
+},
+{
+    "model": "reservation.tables",
+    "pk": 9,
+    "fields": {
+        "number_mesa": 9,
+        "is_selected": false
+    }
+},
+{
+    "model": "reservation.tables",
+    "pk": 10,
+    "fields": {
+        "number_mesa": 10,
+        "is_selected": false
+    }
+},
+{
+    "model": "reservation.tables",
+    "pk": 11,
+    "fields": {
+        "number_mesa": 11,
+        "is_selected": false
+    }
+},
+{
+    "model": "reservation.tables",
+    "pk": 12,
+    "fields": {
+        "number_mesa": 12,
+        "is_selected": false
+    }
+},
+{
+    "model": "reservation.tables",
+    "pk": 13,
+    "fields": {
+        "number_mesa": 13,
+        "is_selected": false
+    }
+},
+{
+    "model": "reservation.tables",
+    "pk": 14,
+    "fields": {
+        "number_mesa": 14,
+        "is_selected": false
+    }
+},
+{
+    "model": "reservation.tables",
+    "pk": 15,
+    "fields": {
+        "number_mesa": 15,
+        "is_selected": false
+    }
+},
+{
+    "model": "reservation.tables",
+    "pk": 16,
+    "fields": {
+        "number_mesa": 16,
+        "is_selected": false
+    }
+},
+{
+    "model": "reservation.tables",
+    "pk": 17,
+    "fields": {
+        "number_mesa": 17,
+        "is_selected": false
+    }
+},
+{
+    "model": "reservation.tables",
+    "pk": 18,
+    "fields": {
+        "number_mesa": 18,
+        "is_selected": false
+    }
+},
+{
+    "model": "reservation.tables",
+    "pk": 19,
+    "fields": {
+        "number_mesa": 19,
+        "is_selected": false
+    }
+},
+{
+    "model": "reservation.tables",
+    "pk": 20,
+    "fields": {
+        "number_mesa": 20,
+        "is_selected": false
+    }
+}
+]

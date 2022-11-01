@@ -1,0 +1,38 @@
+[
+{
+    "model": "contact.contact",
+    "pk": 1,
+    "fields": {
+        "read": false,
+        "fullname": "Fernando Henrique",
+        "email": "fernan@gmail.com",
+        "message": "Quisiera contactarme con usted",
+        "phone": "3454343232",
+        "date_contact": "2022-10-30T19:02:30.674Z"
+    }
+},
+{
+    "model": "contact.contact",
+    "pk": 2,
+    "fields": {
+        "read": false,
+        "fullname": "Gabriel Arias",
+        "email": "gabyq@gmail.com",
+        "message": "Quisiera saber el listado de productos",
+        "phone": "3434221123",
+        "date_contact": "2022-10-30T19:03:05.823Z"
+    }
+},
+{
+    "model": "contact.contact",
+    "pk": 3,
+    "fields": {
+        "read": false,
+        "fullname": "Elena Wanndowsky",
+        "email": "elen123@gmail.com",
+        "message": "Tengo un problema al iniciar sesion",
+        "phone": "2343117785",
+        "date_contact": "2022-10-30T19:03:40.006Z"
+    }
+}
+]

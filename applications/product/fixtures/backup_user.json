@@ -1,0 +1,381 @@
+[
+{
+    "model": "product.product",
+    "pk": 2,
+    "fields": {
+        "name": "The King Burguer",
+        "description": "Sin descripcion...",
+        "price": 700.0,
+        "img": "menu1.jpg",
+        "published": "2022-10-21",
+        "category": [
+            3,
+            1
+        ]
+    }
+},
+{
+    "model": "product.product",
+    "pk": 3,
+    "fields": {
+        "name": "Surubi",
+        "description": "Sin descripcion...",
+        "price": 850.0,
+        "img": "menu2.jpg",
+        "published": "2022-10-22",
+        "category": [
+            6,
+            1
+        ]
+    }
+},
+{
+    "model": "product.product",
+    "pk": 4,
+    "fields": {
+        "name": "Pimiento relleno",
+        "description": "Sin descripcion...",
+        "price": 850.0,
+        "img": "menu3.jpg",
+        "published": "2022-10-22",
+        "category": [
+            1,
+            7
+        ]
+    }
+},
+{
+    "model": "product.product",
+    "pk": 5,
+    "fields": {
+        "name": "Merluza rellena",
+        "description": "Sin descripcion...",
+        "price": 950.0,
+        "img": "menu4.jpg",
+        "published": "2022-10-22",
+        "category": [
+            6,
+            1
+        ]
+    }
+},
+{
+    "model": "product.product",
+    "pk": 6,
+    "fields": {
+        "name": "Fugazzeta",
+        "description": "Sin descripcion...",
+        "price": 850.0,
+        "img": "menu5.jpg",
+        "published": "2022-10-22",
+        "category": [
+            2,
+            1
+        ]
+    }
+},
+{
+    "model": "product.product",
+    "pk": 7,
+    "fields": {
+        "name": "Filete de Surubi",
+        "description": "Sin descripcion...",
+        "price": 1150.0,
+        "img": "menu6.jpg",
+        "published": "2022-10-22",
+        "category": [
+            6,
+            1
+        ]
+    }
+},
+{
+    "model": "product.product",
+    "pk": 8,
+    "fields": {
+        "name": "Ensalada de Berlinesa",
+        "description": "Sin descripcion...",
+        "price": 800.0,
+        "img": "menu7.jpg",
+        "published": "2022-10-22",
+        "category": [
+            5,
+            1
+        ]
+    }
+},
+{
+    "model": "product.product",
+    "pk": 9,
+    "fields": {
+        "name": "Brocheta de Ternera",
+        "description": "Sin descripcion...",
+        "price": 850.0,
+        "img": "menu8.jpg",
+        "published": "2022-10-22",
+        "category": [
+            1,
+            7
+        ]
+    }
+},
+{
+    "model": "product.product",
+    "pk": 10,
+    "fields": {
+        "name": "Latitud 33",
+        "description": "Sin descripcion...",
+        "price": 2500.0,
+        "img": "",
+        "published": "2022-10-24",
+        "category": [
+            9
+        ]
+    }
+},
+{
+    "model": "product.product",
+    "pk": 11,
+    "fields": {
+        "name": "Cerveza Corona",
+        "description": "Sin descripcion...",
+        "price": 600.0,
+        "img": "",
+        "published": "2022-10-24",
+        "category": [
+            9
+        ]
+    }
+},
+{
+    "model": "product.product",
+    "pk": 12,
+    "fields": {
+        "name": "Coca-Cola",
+        "description": "Sin descripcion...",
+        "price": 450.0,
+        "img": "",
+        "published": "2022-10-24",
+        "category": [
+            8
+        ]
+    }
+},
+{
+    "model": "product.product",
+    "pk": 13,
+    "fields": {
+        "name": "Fanta",
+        "description": "Sin descripcion...",
+        "price": 450.0,
+        "img": "",
+        "published": "2022-10-24",
+        "category": [
+            8
+        ]
+    }
+},
+{
+    "model": "product.product",
+    "pk": 14,
+    "fields": {
+        "name": "Sprite",
+        "description": "Sin descripcion...",
+        "price": 450.0,
+        "img": "",
+        "published": "2022-10-24",
+        "category": [
+            8
+        ]
+    }
+},
+{
+    "model": "product.product",
+    "pk": 15,
+    "fields": {
+        "name": "Stella Artois",
+        "description": "Sin descripcion...",
+        "price": 750.0,
+        "img": "",
+        "published": "2022-10-24",
+        "category": [
+            9
+        ]
+    }
+},
+{
+    "model": "product.product",
+    "pk": 16,
+    "fields": {
+        "name": "Rutini Malbec",
+        "description": "Sin descripcion...",
+        "price": 1800.0,
+        "img": "",
+        "published": "2022-10-24",
+        "category": [
+            9
+        ]
+    }
+},
+{
+    "model": "product.product",
+    "pk": 17,
+    "fields": {
+        "name": "Especial",
+        "description": "Sin descripcion...",
+        "price": 2000.0,
+        "img": "",
+        "published": "2022-10-24",
+        "category": [
+            4
+        ]
+    }
+},
+{
+    "model": "product.product",
+    "pk": 18,
+    "fields": {
+        "name": "Comun",
+        "description": "Sin descripcion...",
+        "price": 1600.0,
+        "img": "",
+        "published": "2022-10-24",
+        "category": [
+            4
+        ]
+    }
+},
+{
+    "model": "product.product",
+    "pk": 19,
+    "fields": {
+        "name": "Ñoquis",
+        "description": "Sin descripcion...",
+        "price": 900.0,
+        "img": "",
+        "published": "2022-10-24",
+        "category": [
+            5
+        ]
+    }
+},
+{
+    "model": "product.product",
+    "pk": 20,
+    "fields": {
+        "name": "Capeletis",
+        "description": "Sin descripcion...",
+        "price": 800.0,
+        "img": "",
+        "published": "2022-10-24",
+        "category": [
+            5
+        ]
+    }
+},
+{
+    "model": "product.product",
+    "pk": 21,
+    "fields": {
+        "name": "Sorrentinos",
+        "description": "Sin descripcion...",
+        "price": 850.0,
+        "img": "",
+        "published": "2022-10-24",
+        "category": [
+            5
+        ]
+    }
+},
+{
+    "model": "product.product",
+    "pk": 22,
+    "fields": {
+        "name": "Papas Fritas Grandes",
+        "description": "Sin descripcion...",
+        "price": 750.0,
+        "img": "",
+        "published": "2022-10-24",
+        "category": [
+            7
+        ]
+    }
+},
+{
+    "model": "product.product",
+    "pk": 23,
+    "fields": {
+        "name": "Papas Fritas Chicas",
+        "description": "Sin descripcion...",
+        "price": 500.0,
+        "img": "",
+        "published": "2022-10-24",
+        "category": [
+            7
+        ]
+    }
+},
+{
+    "model": "product.category",
+    "pk": 1,
+    "fields": {
+        "name": "Sentidos"
+    }
+},
+{
+    "model": "product.category",
+    "pk": 2,
+    "fields": {
+        "name": "Pizzas"
+    }
+},
+{
+    "model": "product.category",
+    "pk": 3,
+    "fields": {
+        "name": "Hamburguesas"
+    }
+},
+{
+    "model": "product.category",
+    "pk": 4,
+    "fields": {
+        "name": "Lomitos"
+    }
+},
+{
+    "model": "product.category",
+    "pk": 5,
+    "fields": {
+        "name": "Pastas"
+    }
+},
+{
+    "model": "product.category",
+    "pk": 6,
+    "fields": {
+        "name": "Pescados"
+    }
+},
+{
+    "model": "product.category",
+    "pk": 7,
+    "fields": {
+        "name": "Snacks"
+    }
+},
+{
+    "model": "product.category",
+    "pk": 8,
+    "fields": {
+        "name": "Bebidas sin alcohol"
+    }
+},
+{
+    "model": "product.category",
+    "pk": 9,
+    "fields": {
+        "name": "Bebidas con alcohol"
+    }
+}
+]

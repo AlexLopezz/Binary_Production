@@ -1,0 +1,106 @@
+[
+{
+    "model": "checking_in.order",
+    "pk": 11,
+    "fields": {
+        "table": 1,
+        "pay": true
+    }
+},
+{
+    "model": "checking_in.order",
+    "pk": 12,
+    "fields": {
+        "table": 2,
+        "pay": true
+    }
+},
+{
+    "model": "checking_in.productorder",
+    "pk": 14,
+    "fields": {
+        "product": 14,
+        "order": 11,
+        "quantity": 1,
+        "price": 450.0
+    }
+},
+{
+    "model": "checking_in.productorder",
+    "pk": 15,
+    "fields": {
+        "product": 15,
+        "order": 11,
+        "quantity": 1,
+        "price": 750.0
+    }
+},
+{
+    "model": "checking_in.productorder",
+    "pk": 16,
+    "fields": {
+        "product": 2,
+        "order": 11,
+        "quantity": 1,
+        "price": 700.0
+    }
+},
+{
+    "model": "checking_in.productorder",
+    "pk": 17,
+    "fields": {
+        "product": 22,
+        "order": 11,
+        "quantity": 1,
+        "price": 750.0
+    }
+},
+{
+    "model": "checking_in.productorder",
+    "pk": 18,
+    "fields": {
+        "product": 13,
+        "order": 12,
+        "quantity": 1,
+        "price": 450.0
+    }
+},
+{
+    "model": "checking_in.productorder",
+    "pk": 19,
+    "fields": {
+        "product": 17,
+        "order": 12,
+        "quantity": 1,
+        "price": 2000.0
+    }
+},
+{
+    "model": "checking_in.method_pay",
+    "pk": 1,
+    "fields": {
+        "name": "Efectivo"
+    }
+},
+{
+    "model": "checking_in.method_pay",
+    "pk": 2,
+    "fields": {
+        "name": "Debito"
+    }
+},
+{
+    "model": "checking_in.method_pay",
+    "pk": 3,
+    "fields": {
+        "name": "Credito"
+    }
+},
+{
+    "model": "checking_in.method_pay",
+    "pk": 4,
+    "fields": {
+        "name": "Plataforma Digital"
+    }
+}
+]

@@ -2,15 +2,16 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from .models import Invoice, Order
-from .serializers import InvoiceSerializerGET, InvoiceSerializerPOST,OrderSerializer, OrderSerializerPOST
+from .serializers import (InvoiceSerializerGET, InvoiceSerializerPOST,OrderSerializer, OrderSerializerPOST,
+PaySerializer, PaySerializerPUT)
 
 
 
 @api_view(['GET',])
 def orderGET(request):
     if request.method == 'GET':
-        orderAll= Order.objects.all()
-        serializer = OrderSerializer(orderAll, many=True)
+        order= Order.objects.filter(pay= False)
+        serializer = OrderSerializer(order, many=True)
         return Response(serializer.data, status= status.HTTP_200_OK)
 
 @api_view(['POST',])
@@ -51,4 +52,14 @@ def detailOrder(request):
         else:
             return Response(serializer.errors, status= status.HTTP_400_BAD_REQUEST)
 
-
+@api_view(['PUT'])
+def updatePaidOrder(request):
+    if request.method == 'PUT':
+        order = Order.objects.get(pk = request.query_params.get('id'))
+        serializer = PaySerializerPUT(order, data = request.data)
+        if serializer.is_valid():
+            order.pay = request.query_params.get('pay')
+            order.save()
+            return Response("Update", status= status.HTTP_200_OK)
+        else:
+            return Response(serializer.errors, status= status.HTTP_400_BAD_REQUEST)

@@ -1,0 +1,178 @@
+[
+{
+    "model": "user.user",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$390000$Kdj789qQxj8VQ0nWB9rxbt$W6up/CtGhuc4BIUU0a+JskcWlMWLciy08KbmsjhDx8s=",
+        "last_login": "2022-11-01T01:52:28.588Z",
+        "is_superuser": true,
+        "username": "pruebita",
+        "email": "prueba@gmail.com",
+        "fullname": "alex saander",
+        "dni": "435243543",
+        "role": 1,
+        "is_staff": true,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "user.user",
+    "pk": 12,
+    "fields": {
+        "password": "pbkdf2_sha256$390000$Cw2EcqTpd0AbwS7YShFPan$Oni3eEYPjXBR0X7FWjPiwt6z1UQFY22w8R1jzgPhp0o=",
+        "last_login": "2022-11-01T04:37:49.626Z",
+        "is_superuser": false,
+        "username": "danielc",
+        "email": "dani@dani.com",
+        "fullname": "Daniel",
+        "dni": "32165498",
+        "role": 4,
+        "is_staff": false,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "user.user",
+    "pk": 14,
+    "fields": {
+        "password": "pbkdf2_sha256$390000$RDwuZfHvYQvggXh4uTEY5I$4Zrcc8jW69PfPD6a2cG39FncDKkItR13n1x7g4Cmmhk=",
+        "last_login": "2022-11-01T04:06:36.207Z",
+        "is_superuser": false,
+        "username": "juan",
+        "email": "juancito@juancirri.com",
+        "fullname": "Juan",
+        "dni": "78945612",
+        "role": 3,
+        "is_staff": false,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "user.user",
+    "pk": 15,
+    "fields": {
+        "password": "pbkdf2_sha256$390000$768G5eRSDHHNNqnOcUQaXd$Oo1FFwMPlw2aXUcjb3ZL8R0ub1cEnVGHD8HOtjpjZ30=",
+        "last_login": "2022-10-24T03:41:06.588Z",
+        "is_superuser": true,
+        "username": "pedro",
+        "email": "pedrinhho@gmail.com",
+        "fullname": "Pedro",
+        "dni": "123456783",
+        "role": 2,
+        "is_staff": true,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "user.user",
+    "pk": 16,
+    "fields": {
+        "password": "pbkdf2_sha256$390000$0BJemsLcT5fToTG2AKoZtC$BOA4V1RjUYJy9P1rPxuV6z/+IxN0astqe5gVt23yS8Q=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "seba",
+        "email": "seba@seba.com",
+        "fullname": "Seba",
+        "dni": "1231231231",
+        "role": 2,
+        "is_staff": false,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "user.user",
+    "pk": 18,
+    "fields": {
+        "password": "pbkdf2_sha256$390000$bMnNj62rN7UUBgdtbMZPES$KBb36H263GHFBvZh91xKjLuWItchuelvJgHUV+TaLJM=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "germi",
+        "email": "asd@gmail.com",
+        "fullname": "German",
+        "dni": "4324234",
+        "role": 5,
+        "is_staff": false,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "user.user",
+    "pk": 19,
+    "fields": {
+        "password": "pbkdf2_sha256$390000$N6CR19sxIMsOZGtmazWvDF$pBS6zM6BUH/UxEqnHWntxJMwJJGLPXRtETHWklL9lz8=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "juaniManu",
+        "email": "asdada@gmail.com",
+        "fullname": "Juan Manuel",
+        "dni": "332235556456464",
+        "role": 2,
+        "is_staff": false,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "user.user",
+    "pk": 20,
+    "fields": {
+        "password": "pbkdf2_sha256$390000$PLQ7grRqyiAhphOvvT29ya$jqYSMTVA+wqy/I8svTWUqk7mmIDCdhjBuRk/NyZvE24=",
+        "last_login": "2022-11-01T02:58:28.092Z",
+        "is_superuser": false,
+        "username": "alexsans",
+        "email": "asda@gmail.com",
+        "fullname": "alex lopez",
+        "dni": "232233",
+        "role": 2,
+        "is_staff": false,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "user.role",
+    "pk": 1,
+    "fields": {
+        "name": "Administrador",
+        "description": "Maneja toda la aplicacion - Pagina Backend"
+    }
+},
+{
+    "model": "user.role",
+    "pk": 2,
+    "fields": {
+        "name": "Maitre",
+        "description": "Encargado de Realizar las reservas"
+    }
+},
+{
+    "model": "user.role",
+    "pk": 3,
+    "fields": {
+        "name": "Mozo",
+        "description": "Se encarga de Cargar los pedidos de cada mesa con el N° de mesa"
+    }
+},
+{
+    "model": "user.role",
+    "pk": 4,
+    "fields": {
+        "name": "Caja",
+        "description": "Se encarga de Generar factura y cargar datos de pago."
+    }
+},
+{
+    "model": "user.role",
+    "pk": 5,
+    "fields": {
+        "name": "Usuario",
+        "description": "Usuario - Sentidos"
+    }
+}
+]

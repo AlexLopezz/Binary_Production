@@ -6,7 +6,8 @@ from applications.user.models import User
 class Order(models.Model):
     table = models.ForeignKey(Tables, on_delete=models.CASCADE,verbose_name="Mesa")
     products = models.ManyToManyField(Product, through="ProductOrder", verbose_name="Productos", blank=True)
-
+    pay = models.BooleanField(verbose_name="Pagado", default=False)
+    
     def __str__(self) -> str:
         return f"Pedido N°{self.id}"
 
