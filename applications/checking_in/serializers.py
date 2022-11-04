@@ -46,7 +46,6 @@ class OrderSerializerPOST(serializers.ModelSerializer):
     class Meta:
         model = Order
         fields = (
-                  'id',
                   'table',
                   'products',
                   )
@@ -62,9 +61,8 @@ class OrderSerializerPOST(serializers.ModelSerializer):
 
 #Serializador para mostrar las facturas.
 class InvoiceSerializerGET(serializers.ModelSerializer):
-    user = InvoiceUSerSerializer()
     order = OrderSerializer()
-    method_pay = PaySerializer()
+    method_pay = serializers.StringRelatedField()
     class Meta:
         model = Invoice
         fields = (
@@ -72,6 +70,7 @@ class InvoiceSerializerGET(serializers.ModelSerializer):
             'date',
             'order',
             'method_pay',
+            'totalPrice',
         )
 
 #Serializer para metodo POST - Crear una nueva factura.
@@ -81,6 +80,7 @@ class InvoiceSerializerPOST(serializers.ModelSerializer):
         fields = (
             'order',
             'method_pay',
+            'totalPrice',
         )
 
 class PaySerializerPUT(serializers.ModelSerializer):

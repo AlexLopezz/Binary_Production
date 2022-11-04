@@ -1,10 +1,11 @@
 from rest_framework.decorators import api_view
 from django.shortcuts import get_object_or_404
 from rest_framework import status
+from django.db.models import Q
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from .models import Product
-from .serializers import ProductSerializer
+from .models import Product, Menu, Category
+from .serializers import ProductSerializer, MenuSerializer, MenuSerializerGET, CategorySerializer
 
 # Create your views here.
 class ProductList(APIView):
@@ -61,4 +62,87 @@ class ShowImageField(APIView):
 
             return Response(serializer_response.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['GET', 'POST', 'DELETE', 'PUT'])
+def menuAdmin(request):
+    if request.method == 'GET':
+        menu = Menu.objects.all()
+        serializer = MenuSerializerGET(menu, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+    if request.method == 'POST':
+        serializer = MenuSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response("Success", status=status.HTTP_200_OK)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
+    if request.method == 'PUT':
+        menu = Menu.objects.get(pk=request.query_params.get('id'))
+        serializer = MenuSerializer(menu, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response("Modify successfuly", status=status.HTTP_200_OK)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+    if request.method == 'DELETE':
+        menu = Menu.objects.get(name=request.query_params.get('nameMenu'))
+        if menu:
+            menu.delete()
+            return Response("Delete success", status=status.HTTP_200_OK)
+        else:
+            return Response("Error", status=status.HTTP_404_NOT_FOUND)
+
+
+@api_view(['GET'])
+def filterForNameMenu(request):
+    menu= Menu.objects.get(name=request.query_params.get('name'))
+    if menu:
+        serializer = MenuSerializerGET(menu)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    else:
+        return Response(serializer.errors, status= status.HTTP_400_BAD_REQUEST)
+
+@api_view(['GET'])
+def filterNameProductExactly(request):
+    product= Product.objects.get(name=request.query_params.get('nameProduct'))
+    if product:
+        serializer = ProductSerializer(product)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    else:
+        return Response(serializer.errors, status= status.HTTP_400_BAD_REQUEST)
+    
+
+@api_view(['GET'])
+def allCategories(request):
+    categories = Category.objects.all()
+    serializer = CategorySerializer(categories, many=True)
+    return Response(serializer.data, status=status.HTTP_200_OK)
+
+@api_view(['GET'])
+def filterForNameProduct(request):
+    if request.method == 'GET':
+        product = Product.objects.filter(
+            Q(name__icontains = request.query_params.get('nameProduct'))).distinct()
+
+        if product:
+            serializer = ProductSerializer(product, many=True)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        else:
+            return Response("No se encontro usuario con ese nombre.")
+
+
+@api_view(['GET'])
+def filterForNameAndCategoryProduct(request):
+    if request.method == 'GET':
+        product = Product.objects.filter(
+            Q(name__icontains = request.query_params.get('nameProduct')) &
+            Q(category__name= request.query_params.get('nameCategory'))).distinct()
+
+        if product:
+            serializer = ProductSerializer(product, many=True)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        else:
+            return Response("No se encontro usuario con ese nombre.", status = status.HTTP_404_NOT_FOUND)

@@ -7,7 +7,7 @@ class Category(models.Model):
         verbose_name_plural= "Categorias de Productos - Restaurante Sentidos y Casa de Te."
         ordering = ('name',)
     
-    name = models.CharField(verbose_name="Nombre", max_length= 80)
+    name = models.CharField(verbose_name="Nombre", max_length= 20)
     
     def __str__(self):
         return self.name
@@ -28,4 +28,14 @@ class Product(models.Model):
     
     def __str__(self):
         return self.name
-    
+
+
+class Menu(models.Model):
+    class Meta:
+        verbose_name= "Menu - Restaurante Sentidos & Casa de Te"
+
+    name = models.CharField(verbose_name="Nombre del menu", max_length=50)
+    products = models.ManyToManyField(Product, blank=True, verbose_name="Productos del menu")
+
+    def __str__(self) -> str:
+        return self.name    
