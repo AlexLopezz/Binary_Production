@@ -1,5 +1,4 @@
 from rest_framework import serializers
-from applications.user.serializers import InvoiceUSerSerializer
 from .models import Invoice, Method_Pay, Order, ProductOrder
 
 class PaySerializer(serializers.ModelSerializer):
@@ -78,6 +77,7 @@ class InvoiceSerializerPOST(serializers.ModelSerializer):
     class Meta:
         model = Invoice
         fields = (
+            'number_invoice',
             'order',
             'method_pay',
             'totalPrice',

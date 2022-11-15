@@ -11,7 +11,7 @@ from rest_framework.response import Response
 @api_view(['PUT'])
 def paidReservationAPIView(request):
     if request.method == 'PUT':
-        reservation = Reservation.objects.get(pk=request.data['id'])
+        reservation = Reservation.objects.get(pk=request.query_params.get('id'))
 
         serializer = PaidSerializer(reservation, data = request.data)
         if serializer.is_valid():
@@ -67,6 +67,29 @@ def detailReservationAPIView(request): #Muestra en detalle una reserva, pasando 
         return Response(serializer.data)
 
 @api_view(['GET'])
+def reservationPay(request):
+    if request.method == 'GET':
+        reservationPay = Reservation.objects.filter(paid=True)
+        if len(reservationPay)!= 0:
+            serializer = getReservationSerializer(reservationPay, many=True)
+            return Response(serializer.data, status= status.HTTP_200_OK)
+        else:
+            return Response("No hay reservas disponibles en este momento.", status=status.HTTP_404_NOT_FOUND)
+
+@api_view(['GET'])
+def reservationWait(request):
+    if request.method == 'GET':
+        reservationWait = Reservation.objects.filter(paid=False)
+        if len(reservationWait) != 0:
+            serializer = getReservationSerializer(reservationWait, many=True)
+            return Response(serializer.data, status= status.HTTP_200_OK)
+        else:
+            return Response("No hay reservas disponibles en este momento.", status=status.HTTP_404_NOT_FOUND)
+
+
+
+
+@api_view(['GET'])
 def allReservationAPIView(request): #Muestra todas las reservas disponibles, o que esteen en la base de datos registradas.
     if request.method == 'GET':
         allReservation = Reservation.objects.all()
@@ -78,7 +101,7 @@ def allReservationAPIView(request): #Muestra todas las reservas disponibles, o q
 
 @api_view(['GET'])
 def getTableSelectedAPIView(request): #Obtiene las reservas, mediante la fecha y horario que recibimos por GET.
-    
+
     if request.method == 'GET':
         date = request.query_params.get('date')
         schedule = request.query_params.get('schedule')
@@ -95,4 +118,5 @@ def filterForDateReservation(request): #Obtiene todas las reservas de una determ
         reservationDay = Reservation.objects.filter(date=request.query_params.get('date'))
         serializer =  getReservationSerializer(reservationDay, many=True)
         return Response(serializer.data)
+
 

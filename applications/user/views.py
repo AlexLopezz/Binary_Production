@@ -84,6 +84,17 @@ def filterCaja(request):
             return Response("No existen usuarios en el ROL de CAJA.", status=status.HTTP_404_NOT_FOUND)
 
 @api_view(['GET'])
+def filterChef(request):
+    if request.method == 'GET':
+        chef = User.objects.filter(
+            role__name="Chef")
+        if chef:
+            serializer =CustomSerializer(chef, many=True)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        else:
+            return Response("No existen usuarios en el ROL de CHEF.", status=status.HTTP_404_NOT_FOUND)
+
+@api_view(['GET'])
 def filterClient(request):
     if request.method == 'GET':
         userClient = User.objects.filter(
@@ -123,15 +134,14 @@ def modifyUser(request):
 def filterForUser(request):
     if request.method == 'GET':
         user = User.objects.filter(
-            Q(username__icontains = request.query_params.get('username')) |
-            Q(fullname__icontains = request.query_params.get('username')) |
+            Q(username__icontains = request.query_params.get('username')) &
             Q(role__name ="Usuario")).distinct()
 
-        if user:
+        if len(user) != 0:
             serializer = ReservaUserSerializer(user, many=True)
             return Response(serializer.data, status=status.HTTP_200_OK)
         else:
-            return Response("No se encontro usuario con ese nombre.")
+            return Response("No se encontro usuario con ese nombre.", status = status.HTTP_404_NOT_FOUND)
 
 @api_view(['GET'])
 def myUser(request):

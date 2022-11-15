@@ -7,7 +7,7 @@ class MenuSerializer(serializers.ModelSerializer):
         model = Menu
         fields = '__all__'
 
-        
+
 class ProductSerializer(serializers.ModelSerializer):
     img = Base64ImageField(required=False)
     class Meta:
@@ -18,6 +18,7 @@ class ProductSerializer(serializers.ModelSerializer):
                   'description',
                   'price',
                   'img',
+                  'category',
                   )
 
 class MenuSerializerGET(serializers.ModelSerializer):
@@ -25,6 +26,7 @@ class MenuSerializerGET(serializers.ModelSerializer):
     class Meta:
         model = Menu
         fields = (
+            'id',
             'name',
             'products',
         )
@@ -33,3 +35,22 @@ class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
         fields = '__all__'
+
+class CategorySerializerPUT(serializers.ModelSerializer):
+    class Meta:
+        model = Category
+        fields = ('name',)
+
+class ProductSerializerGET(serializers.ModelSerializer):
+    category= CategorySerializer(many=True)
+    img = Base64ImageField(required=False)
+    class Meta:
+        model = Product
+        fields = (
+                  'id',
+                  'name',
+                  'description',
+                  'price',
+                  'img',
+                  'category',
+                  )

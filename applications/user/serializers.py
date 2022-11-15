@@ -71,12 +71,11 @@ class CustomSerializer(serializers.ModelSerializer):
 class ModifySerializer(serializers.ModelSerializer):
     class Meta:
         model= User
-        fields= ('id','username', 'email','fullname','dni','password','role')
-        extra_kwargs = {'password': {'write_only': True}}
+        fields= ('id','username', 'email','fullname','dni','role')
+
 
     def update(self, instance, validated_data):
         user_update= super().update(instance, validated_data)
-        user_update.set_password(validated_data['password'])
         user_update.save()
         return user_update
 

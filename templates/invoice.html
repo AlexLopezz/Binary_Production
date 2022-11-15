@@ -1,0 +1,67 @@
+{% load static %}
+<html>
+<head>
+    <title>FACTURA</title>
+    <style>
+        /* Selector de clase */
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        img {
+           margin-top: 150px;
+           margin-left: 150px;
+        }
+        .factura__header__parrafo {
+            text-align: left;
+            margin-left: 10px;
+            margin-bottom: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div style="text-align: left;">
+        <div class="factura__header__parrafo">
+            <h1 style="margin-bottom: 5px; text-align: center;">Sentidos Restaurante & Casa de Té</h1>
+            <p>Direccion: French 440.</p>
+            <p>Inicio de actividad: 01/01/2022</p>
+            <p>CUIT: 20-98765765-2</p>
+            <p>IVA RESPONSABLE INSCRIPTO</p>
+            <p>---------------------------------------------------------</p>
+            <h1>FACTURA B</h1>
+            <p>Factura N°: {{ invoice.number_invoice }}</p>
+            <p>Fecha: {{invoice.date}}</p>
+            <p>Mesa N°: {{ invoice.order.table }}</p>
+            <p>Metodo de pago: {{ invoice.method_pay }}</p>
+            <p>Cliente: Consumidor Final</p>
+            <p>Concepto: Productos</p>
+            <p>---------------------------------------------------------</p>
+        </div>
+        <div class="factura__header__parrafo">
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Precio unitario</th>
+                        <th>Cantidad</th>
+                        <th>Precio total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                  {% for p in invoice.order.productorder_set.all %}
+                    <tr>
+                        <td>{{ p.product.name }}</td>
+                        <td>${{ p.getUnitPrice }}</td>
+                        <td>x{{ p.quantity }}</td>
+                        <td>${{ p.price }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <p style="margin-top:10px; font-size:20px;">Precio total a pagar: ${{ invoice.totalPrice }}</p>
+            <img src="{% static 'home/QRFactura.png' %}" alt="QR" style="width: 200px;"/>
+        </div>
+    </div>
+    
+</body>
+</html>

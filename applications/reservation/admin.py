@@ -7,7 +7,6 @@ class ReservationAdmin(admin.ModelAdmin):
         'date',
         'schedule',
         'paid',
-        'paid_parcial',
         'id',
     )
     search_fields = (

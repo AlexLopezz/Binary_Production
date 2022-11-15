@@ -25,8 +25,7 @@ class getReservationSerializer(serializers.ModelSerializer): #Sera utilizado par
             'schedule',
             'date',
             'paid',
-            'paid_parcial',
-            'selected_tables')
+            'selected_tables',)
 
 class  getTableReservationSerializer(serializers.ModelSerializer):
     selected_tables = Selected_Table_Serializer(many=True)
@@ -38,7 +37,7 @@ class ReservationSerializer(serializers.ModelSerializer): #SERIALIZER POST : Ser
 
     class Meta:
         model = Reservation
-        fields = ['user_id', 'phone', 'schedule', 'date', 'selected_tables']
+        fields = ['user_id', 'phone', 'schedule', 'date', 'paid','selected_tables']
 
 
 class PaidSerializer(serializers.ModelSerializer):
@@ -47,6 +46,5 @@ class PaidSerializer(serializers.ModelSerializer):
         fields = (
             'id',
             'paid',
-            'paid_parcial'
         )
 

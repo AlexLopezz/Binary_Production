@@ -20,8 +20,7 @@ class Reservation(models.Model):
     schedule = models.CharField("Horario", max_length=20)
     date = models.DateField(verbose_name="Fecha")
     selected_tables = models.ManyToManyField(Tables, blank=True)
-    paid_parcial = models.BooleanField("Pagado Parcial", default=False)
-    paid = models.BooleanField("Pagado Total", default=False)
+    paid = models.BooleanField("Pagado", default=False)
 
 
     def __str__(self):

@@ -1,7 +1,7 @@
 from django.urls import path
 from .views import (ReservationAPIView, MyReservationAPIView,
 deleteReservationAPIView, detailReservationAPIView, getTableSelectedAPIView, allReservationAPIView, filterForDateReservation,
-paidReservationAPIView, filterForDateReservation)
+paidReservationAPIView, filterForDateReservation, reservationPay, reservationWait)
 
 app_name = 'reservation'
 
@@ -12,6 +12,8 @@ urlpatterns = [
     path('api/deleteReservation/', deleteReservationAPIView), #DELETE - ELIMINA UNA RESERVACION CON ESE ID.
     path('api/detailReservation/', detailReservationAPIView ), #GET - ACTUALIZA LA RESERVA
     path('api/allReservation/', allReservationAPIView ), #GET - TODAS LAS RESERVAS.
+    path('api/reservationPay/', reservationPay),
+    path('api/reservationWait/', reservationWait),
     path('api/paidReservation/', paidReservationAPIView),
     path('api/filterForDate/', filterForDateReservation), #GET - ME DEBE ENVIAR EL PARAMETRO Y LE RETORNO TODAS LAS RESERVAS DE ESE DIA.
 ]

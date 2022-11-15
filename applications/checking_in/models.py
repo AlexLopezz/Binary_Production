@@ -21,6 +21,9 @@ class ProductOrder(models.Model):
     quantity = models.PositiveIntegerField(default=1, verbose_name="Cantidad")
     price = models.FloatField(verbose_name="Precio", default=1)
 
+    def getUnitPrice(self):
+        return self.price / self.quantity
+
     def __str__(self) -> str:
         return f"Productos elegidos"
 
